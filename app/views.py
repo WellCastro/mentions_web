@@ -10,13 +10,15 @@ ID_LOCAWEB = 42
 
 def get_most(name):
     # get relevants in api
+    print name
     result = None
     if name == "relevants":
         url = URL_RELEVANTS
     elif name == "mentions":
         url = URL_MENTIONS
     try:
-        r = requests.get(url + "/" + str(ID_LOCAWEB))
+        url = url + "/" + str(ID_LOCAWEB)
+        r = requests.get(url)
         result = r.json()
     except Exception, e:
         print e
@@ -43,28 +45,29 @@ class MostMentions(generic.TemplateView):
         list_group = []
         tweets = []
 
-        for group in context["results"].itervalues():
-            for user in group:
-                text = user.get('text')
-                likes = user.get('likes')
-                link_tweet = user.get('link_tweet')
-                retweets = user.get('retweets')
-                date = user.get('date')
+        if context["results"]:
+            for group in context["results"].itervalues():
+                for user in group:
+                    text = user.get('text')
+                    likes = user.get('likes')
+                    link_tweet = user.get('link_tweet')
+                    retweets = user.get('retweets')
+                    date = user.get('date')
 
-                name = user.get('user').get('screen_name')
+                    name = user.get('user').get('screen_name')
 
-                tweets.append({
-                    "text": text,
-                    "likes": likes,
-                    "link_tweet": link_tweet,
-                    "retweets": retweets,
-                    "date": date
+                    tweets.append({
+                        "text": text,
+                        "likes": likes,
+                        "link_tweet": link_tweet,
+                        "retweets": retweets,
+                        "date": date
+                    })
+                list_group.append({
+                    "name": name,
+                    "tweets": tweets
                 })
-            list_group.append({
-                "name": name,
-                "tweets": tweets
-            })
-            tweets = []
+                tweets = []
         context["results"] = list_group
 
         return context

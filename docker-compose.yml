@@ -1,0 +1,23 @@
+version: '2'  
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_page
+    ports:
+      - "82:8002"
+    volumes:
+      - ./config:/etc/nginx/conf.d
+      - ./assets:/static
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: web
+    command: bash -c 'gunicorn mentions_web.wsgi -b 0.0.0.0:8002'
+    ports:
+       - "8002:8002"
+    volumes:
+      - ./assets:/static
+    expose:
+      - "8002"
+      - "82"
