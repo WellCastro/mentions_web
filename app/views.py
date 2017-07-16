@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 import requests
 from django.views import generic
 
-URL_RELEVANTS = "http://localhost:8001/most_relevants"
-URL_MENTIONS = "http://localhost:8001/most_mentions"
+URL_RELEVANTS = "http://198.199.65.250:8001/most_relevants"
+URL_MENTIONS = "http://198.199.65.250:8001/most_mentions"
 ID_LOCAWEB = 42
 
 
