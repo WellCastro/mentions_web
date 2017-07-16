@@ -10,7 +10,6 @@ ID_LOCAWEB = 42
 
 def get_most(name):
     # get relevants in api
-    print name
     result = None
     if name == "relevants":
         url = URL_RELEVANTS
@@ -32,7 +31,6 @@ class MostRelevants(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MostRelevants, self).get_context_data(**kwargs)
         context["results"] = get_most("relevants")
-
         return context
 
 
