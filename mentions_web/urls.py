@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from app.views import Index
+from app.views import MostRelevants, MostMentions
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', Index.as_view(), name='index'),
+    url(r'^most_mentions/', MostMentions.as_view(), name='mentions'),
+    url(r'^most_relevants/', MostRelevants.as_view(), name='index'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
