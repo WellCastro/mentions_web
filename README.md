@@ -12,7 +12,7 @@ Escolhido para facilitar a implatanção, deixando instalações apenas para con
 
 
 
-# Executando da web page:
+# Executando a aplicação:
 Para executar a aplicação basta seguir os seguintes comandos do Docker-Compose
 
 ```
