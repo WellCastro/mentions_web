@@ -28,4 +28,4 @@ docker-compose up -d
 
 # Page em produção:
 A aplicação também está sendo executada em um ambiente de "produção".
-<a href="http://198.199.65.250:8002/most_mentions/">URL Produção</a>
+<a href="http://165.227.158.232:8002/most_relevants/">URL Produção</a>
